@@ -47,7 +47,7 @@
                 <td>{{order.TrackingStatus}}</td>
                 <td>{{order.ReceiveTime}}</td>
                 <td>
-                    <a href='' target="_blank">Open Details</a>
+                    <button (click)="gotoDetail(order.Id)">Open Detail</button>
                 </td>
             </tr>
         </tbody>

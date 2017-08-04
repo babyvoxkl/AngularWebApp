@@ -1,4 +1,5 @@
 export class OrderInfo {
+    Id: string;
     Dn: string;
     Cn: string;
     Run: string;
@@ -7,5 +8,4 @@ export class OrderInfo {
     TrackingType: string;
     TrackingStatus: string;
     ReceiveTime: string;
-    Id: string;
 }

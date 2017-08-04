@@ -1,14 +1,16 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 import { OrdersComponent } from './orders.component';
+import { OrderDetailComponent } from './order-detail.component';
 
 import { OrdersService } from './service/orders.service';
+import { MessageService } from "./service/message.service";
 
 @NgModule({
   imports: [
@@ -17,8 +19,13 @@ import { OrdersService } from './service/orders.service';
     HttpModule,
     AppRoutingModule
   ],
-  declarations: [ AppComponent,OrdersComponent ],
-  providers: [ OrdersService ],
-  bootstrap:    [ AppComponent ]
+  declarations: [
+    AppComponent,
+    OrdersComponent,
+    OrderDetailComponent],
+  providers: [
+    OrdersService,
+    MessageService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

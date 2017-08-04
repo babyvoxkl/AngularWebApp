@@ -1,0 +1,63 @@
+<div>
+    <a (click)="goBack()" )>Back</a>
+</div>
+<div style="width: 100%">
+    <strong>DN:</strong>
+    <label></label>
+    <strong>CN:</strong>
+    <label></label>
+    <strong>Run:</strong>
+    <label></label>
+    <strong>Carton:</strong>
+    <label></label>
+</div>
+<div style="width: 100%;">
+    <table border="1" cellpadding="4" cellspacing="0" style="width: 100%;">
+        <tr>
+            <th style="width: 4%">Timestamp</th>
+            <th style="width: 2.5%">SN</th>
+            <th style="width: 2.5%">Message Type</th>
+            <th style="width: 30%">Request Message</th>
+            <th style="width: 30%">Return Messages</th>
+            <th>Message Status</th>
+            <th style="width: 100px;">Error Messages</th>
+        </tr>
+        <tr *ngFor="let message of messageDetailList">
+            <td valign="top">
+                {{message.ReceivedDateTime}}
+            </td>
+            <td valign="top">
+                {{message.Sn}}
+            </td>
+            <td valign="top">
+                {{message.Type}}
+            </td>
+            <td valign="top">
+                <pre>{{message.OriginalMessage}}</pre>
+            </td>
+            <td valign="top">
+                <pre>{{message.Retrun[0].ReturnMessage}}</pre>
+            </td>
+            <td valign="top">{{message.Status}}</td>
+            <td valign="top">
+                <ul>
+                    <li style="width: 100%;" *ngFor="let error of message.ErrorList">
+                        <strong>Baozun</strong> | <u>{{error.ErrorCode}}</u> - {{error.ErrorMessage}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <strong>Status List:</strong>
+        <ul>
+            <li>0-New&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>Request is newly received</em></li>
+            <li>1-Transmitted&nbsp;&nbsp;&nbsp;<em>Request to transmitted to BZ is ready</em></li>
+            <li>2-GetReply&nbsp;&nbsp;&nbsp;&nbsp; <em>Response from BZ has been received</em></li>
+            <li>3-Returned&nbsp;&nbsp;&nbsp;&nbsp; <em>Response has been sent back to XPDS</em></li>
+            <li>4-Processed&nbsp;&nbsp; &nbsp; <em>Request has been processed and saved into CI</em></li>
+            <li>5-WaitReturn&nbsp;&nbsp; &nbsp;<em>Response from BZ has been processed in CI</em></li>
+        </ul>
+        <img src="../Images/StatusFlow.png" alt="Status Flow Chart" style="width: 1100px;" />
+    </div>
+</div>

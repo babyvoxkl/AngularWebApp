@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-// Observable class extensions
-import 'rxjs/add/observable/of';
+
 // Observable operators
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+
 
 import { OrderInfo } from './model/order-info';
 import { AdminSiteFilter } from './model/admin-site-filter';
@@ -57,14 +53,17 @@ export class OrdersComponent implements OnInit {
                 this.orderList = orders as OrderInfo[]
             });
     }
-    setTime() {
+    setTime(): void {
         this.time = this.defTime;
     }
-    setSucceed(checked: boolean) {
+    setSucceed(checked: boolean): void {
         this.success = checked;
     }
-    setFailed(checked: boolean) {
+    setFailed(checked: boolean): void {
         this.failed = checked;
+    }
+    gotoDetail(id:string): void{
+        this.router.navigate(['/detail', id]);
     }
     ngOnInit(): void {
         this.defTime = "0";
