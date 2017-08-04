@@ -1,7 +1,7 @@
 export class AdminSiteFilter{
-    filter: string;
-    filterContent: string;
-    time: string;
-    sucess: boolean;
-    failed: boolean;
+    Filter: string;
+    FilterContent: string;
+    Time: string;
+    Success: boolean;
+    Failed: boolean;
 }

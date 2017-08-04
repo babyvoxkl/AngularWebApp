@@ -1,11 +1,11 @@
-export class OrderInfo{
-    dn: string;
-    cn: string;
-    run: string;
-    cartonNumber: string;
-    trackingNumber: string;
-    trackingType: string;
-    trackingStatus: string;
-    receiveTime: string;
-    id: string;
+export class OrderInfo {
+    Dn: string;
+    Cn: string;
+    Run: string;
+    CartonNumber: string;
+    TrackingNumber: string;
+    TrackingType: string;
+    TrackingStatus: string;
+    ReceiveTime: string;
+    Id: string;
 }

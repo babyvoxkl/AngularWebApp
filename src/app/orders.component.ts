@@ -31,7 +31,9 @@ export class OrdersComponent implements OnInit {
     public time: string;
     public success: boolean;
     public failed: boolean;
-    private filter = new Subject<AdminSiteFilter>();
+    public defTime: string;
+
+    private adminFilter: AdminSiteFilter;
 
     constructor(
         private ordersService: OrdersService,
@@ -44,23 +46,40 @@ export class OrdersComponent implements OnInit {
             });
     }
     search(): void {
-        let adminFilter: AdminSiteFilter;
-        adminFilter.filter = this.filterValue;
-        adminFilter.filterContent = this.filterContent;
-        adminFilter.sucess = this.success;
-        adminFilter.failed = this.failed;
-        adminFilter.time = this.time;
+        this.adminFilter.Filter = this.filterValue;
+        this.adminFilter.FilterContent = this.filterContent;
+        this.adminFilter.Success = this.success;
+        this.adminFilter.Failed = this.failed;
+        this.adminFilter.Time = this.time;
 
-        this.filter.next(adminFilter);
+        this.ordersService.search(this.adminFilter)
+            .subscribe(orders => {
+                this.orderList = orders as OrderInfo[]
+            });
+    }
+    setTime() {
+        this.time = this.defTime;
+    }
+    setSucceed(checked: boolean) {
+        this.success = checked;
+    }
+    setFailed(checked: boolean) {
+        this.failed = checked;
     }
     ngOnInit(): void {
-        this.filter
-            .distinctUntilChanged()
-            .switchMap(term => term ? this.ordersService.search(term) : this.ordersService.getOrders())
-            .catch(error => {
-                console.log(error);
-                return Observable.of<OrderInfo[]>([]);
-            })
+        this.defTime = "0";
+        this.failed = true;
+        this.success = false;
+        this.filterValue = "dn";
+        this.filterContent = "";
+
+        this.adminFilter = new AdminSiteFilter();
+        this.adminFilter.Filter = this.filterValue;
+        this.adminFilter.FilterContent = this.filterContent;
+        this.adminFilter.Success = this.success;
+        this.adminFilter.Failed = this.failed;
+        this.adminFilter.Time = this.time;
+        this.ordersService.getOrders()
             .subscribe(orders => {
                 this.orderList = orders as OrderInfo[]
             });
