@@ -1,0 +1,56 @@
+<orders-search></orders-search>
+<hr/>
+<div style="margin-top: 20px;">
+    Search by:
+    <input #rbDn type="radio" id="rbDn" value="DN" checked="checked" name="filter" (click)="this.filterValue = rbDn.value">
+    <input #rbCn type="radio" id="rbCn" value="CN" name="filter" (click)="this.filterValue = rbCn.value">
+    <input #rbCarton type="radio" id="rbCarton" value="Carton Id" name="filter" (click)="this.filterValue = rbCarton.value">
+    <input #rbRun type="radio" id="rbRun" value="Run" name="filter" (click)="this.filterValue = rbRun.value">
+    <input #searchContent type="text" id="txtSearchInput" value="" style="width: 200px" (keyup)="this.filterContent = searchContent.value">
+    <label>Time: </label>
+    <select id="ddlTime">
+        <optgroup>
+            <option value="0" selected="selected" (click)="this.time = '0'" >Last 1 hours</option>
+            <option value="1" (click)="this.time = '1'">Last 7 hours</option>
+            <option value="2" (click)="this.time = '2'">Last 24 hours</option>
+            <option value="3" (click)="this.time = '3'">Last 7 days</option>
+            <option value="4" (click)="this.time = '4'">Last 30 days</option>
+        </optgroup>
+    </select>
+    <input type="checkbox" id="cbSuccess" value="Succeed" (click)="this.success = true" />
+    <input type="checkbox" id="cbFail" value="Filed" checked="checked" (click)="this.failed = true" />
+    <input type="button" id="btnSearch" value="Search" (click)="search" />
+</div>
+<div>
+    <b>(Only top 200 rows are displayed)</b>
+    <table style="width: 90%;" id="logTable">
+        <thead style="font-weight: bold">
+            <tr>
+                <td>DN</td>
+                <td>CN</td>
+                <td>Run</td>
+                <td>Carton ID</td>
+                <td>Tracking Number</td>
+                <td>Fwd / Rvrs</td>
+                <td>Request Status</td>
+                <td>Request Timestamp</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orderList">
+                <td>{{order.dn}}</td>
+                <td>{{order.cn}}</td>
+                <td>{{order.run}}</td>
+                <td>{{order.cartonNumber}}</td>
+                <td>{{order.trackingNumber}}</td>
+                <td>{{order.trackingType}}</td>
+                <td>{{order.trackingStatus}}</td>
+                <td>{{order.receiveTime}}</td>
+                <td>
+                    <a href='' target="_blank">Open Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
