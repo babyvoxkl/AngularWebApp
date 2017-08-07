@@ -1,6 +1,7 @@
-# MyApp
+# Carrier Integration Admin Site
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+This is a Demo app.
 
 ## Development server
 
