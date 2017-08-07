@@ -36,7 +36,7 @@
                 <pre>{{message.OriginalMessage}}</pre>
             </td>
             <td valign="top">
-                <pre>{{message.Retrun[0].ReturnMessage}}</pre>
+                <pre *ngFor="let return of message.Retrun">{{return.ReturnMessage}}</pre>
             </td>
             <td valign="top">{{message.Status}}</td>
             <td valign="top">

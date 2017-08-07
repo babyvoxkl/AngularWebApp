@@ -78,6 +78,7 @@ export class OrdersComponent implements OnInit {
         this.adminFilter.Success = this.success;
         this.adminFilter.Failed = this.failed;
         this.adminFilter.Time = this.time;
+
         this.ordersService.getOrders()
             .subscribe(orders => {
                 this.orderList = orders as OrderInfo[]
