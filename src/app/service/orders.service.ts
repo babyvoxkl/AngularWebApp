@@ -12,16 +12,17 @@ import { AdminSiteFilter } from '../model/admin-site-filter';
 export class OrdersService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private ordersUrl = 'http://tcgiapp1wapp001:801/api/V1/Orders';
-  //private ordersUrl = 'http://localhost:53705/api/V1/Orders';
-  //private ordersUrl = 'http://localhost:55246/api/orders';
+  // private ordersUrl = 'http://localhost:53705/api/V1/Orders';
+  // private ordersUrl = 'http://localhost:55246/api/orders';
 
   constructor(private http: Http) { }
 
   search(filter: AdminSiteFilter): Observable<OrderInfo[]> {
     // let thisUrl: string;
+    // tslint:disable-next-line:max-line-length
     // thisUrl = `${this.ordersUrl}?Success=${filter.sucess}&Failed=${filter.failed}&Filter=${filter.filter}&FilterContetn=${filter.filterContent}&Time=${filter.time}`;
-    let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
-    let options = new RequestOptions({ headers: headers });
+    const headers = new Headers({ 'Content-Type': 'application/json' }); // 其实不表明 json 也可以, ng 默认好像是 json
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.ordersUrl, filter, options)
       .map<Response, OrderInfo[]>(response => response.json() as OrderInfo[])
@@ -35,9 +36,9 @@ export class OrdersService {
     filter = new AdminSiteFilter();
     filter.Failed = true;
     filter.Success = false;
-    filter.Filter = "dn";
+    filter.Filter = 'dn';
     filter.FilterContent = '';
-    filter.Time = "0"
+    filter.Time = '0';
 
     return this.search(filter);
   }

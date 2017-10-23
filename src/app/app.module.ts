@@ -10,7 +10,7 @@ import { OrdersComponent } from './orders.component';
 import { OrderDetailComponent } from './order-detail.component';
 
 import { OrdersService } from './service/orders.service';
-import { MessageService } from "./service/message.service";
+import { MessageService } from './service/message.service';
 
 @NgModule({
   imports: [

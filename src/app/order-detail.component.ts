@@ -7,13 +7,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
 
-//Mode
-import { MessageDetail } from "./model/message-detail";
-import { MessageDetailReturn } from "./model/message-detail-return";
-import { MessageDetailError } from "./model/message-detail-error";
+// Mode
+import { MessageDetail } from './model/message-detail';
+import { MessageDetailReturn } from './model/message-detail-return';
+import { MessageDetailError } from './model/message-detail-error';
 
-//Service
-import { MessageService } from "./service/message.service";
+// Service
+import { MessageService } from './service/message.service';
 
 @Component({
     selector: 'order-detail',

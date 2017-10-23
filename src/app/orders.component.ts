@@ -38,7 +38,7 @@ export class OrdersComponent implements OnInit {
     getOrderList(): void {
         this.ordersService.getOrders()
             .subscribe(orders => {
-                this.orderList = orders as OrderInfo[]
+                this.orderList = orders as OrderInfo[];
             });
     }
     search(): void {
@@ -50,7 +50,7 @@ export class OrdersComponent implements OnInit {
 
         this.ordersService.search(this.adminFilter)
             .subscribe(orders => {
-                this.orderList = orders as OrderInfo[]
+                this.orderList = orders as OrderInfo[];
             });
     }
     setTime(): void {
@@ -62,15 +62,15 @@ export class OrdersComponent implements OnInit {
     setFailed(checked: boolean): void {
         this.failed = checked;
     }
-    gotoDetail(id:string): void{
+    gotoDetail(id: string): void {
         this.router.navigate(['/detail', id]);
     }
     ngOnInit(): void {
-        this.defTime = "0";
+        this.defTime = '0';
         this.failed = true;
         this.success = false;
-        this.filterValue = "dn";
-        this.filterContent = "";
+        this.filterValue = 'dn';
+        this.filterContent = '';
 
         this.adminFilter = new AdminSiteFilter();
         this.adminFilter.Filter = this.filterValue;
@@ -81,7 +81,7 @@ export class OrdersComponent implements OnInit {
 
         this.ordersService.getOrders()
             .subscribe(orders => {
-                this.orderList = orders as OrderInfo[]
+                this.orderList = orders as OrderInfo[];
             });
     }
 }

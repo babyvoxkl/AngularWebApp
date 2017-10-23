@@ -1,5 +1,5 @@
-import { MessageDetailReturn } from "./message-detail-return";
-import { MessageDetailError } from "./message-detail-error";
+import { MessageDetailReturn } from './message-detail-return';
+import { MessageDetailError } from './message-detail-error';
 
 export class MessageDetail {
     Id: string;
